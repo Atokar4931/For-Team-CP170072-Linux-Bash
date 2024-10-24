@@ -1,0 +1,34 @@
+
+#!/bin/bash
+#upgrading the apt with ufw 
+If [apt search ufw &>/dev/null]; then  
+  apt-get install ufw
+# enabling it and checking the status
+Else
+  ufw enable
+  ufw status
+# installing and ruinning rkhunter and chrootkit
+Else 
+  [apt search rkhunter &>/dev/null]; then
+ 	apt-get install rkhunter 
+Else  
+  rkhunter
+# installing and ruinning rkhunter and chrootkit
+Else
+  [apt search chkrootkit &>/dev/null]; then
+  apt-get install chrootkit
+Else  
+  chrootkit
+# enabling the auditing
+Else
+  [apt search auditd &>/dev/null]; then
+  apt-get install auditd
+Else
+  auditctl -e 1
+#install bum
+Else
+	[apt search bum &>/dev/null]; then
+	apt-get install bum 
+# sees that serivces are running 
+Else
+  bum
